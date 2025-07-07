@@ -1,3 +1,3 @@
-library simple_store;
+library smart_store;
 
 export 'src/store.dart';

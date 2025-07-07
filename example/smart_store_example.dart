@@ -1,4 +1,4 @@
-import 'package:simple_store/simple_store.dart';
+import 'package:smart_store/smart_store.dart';
 
 class User {
   final String name;
