@@ -1,9 +1,9 @@
 
-# 🧠 simple_store
+🧠 simple_store
+Flutter package for ultra-simple local data storage in key-value format — with zero boilerplate.
+Supports saving any type: int, double, String, List, Map, Object, List<Object>... all with just one line.
+Fully cross-platform: Android, iOS, Windows, macOS, Linux
 
-> Flutter package for ultra-simple local storage of **any data type** using key-value format — with **zero boilerplate**.  
-Save `int`, `double`, `String`, `List`, `Map`,`Object`,`List<Object>` or even custom objects with just one line.  
-Supports: **Android, iOS, Windows, Linux, macOS**.
 
 ---
 
@@ -16,20 +16,37 @@ flutter pub add simple_store
 ---
 
 ## ✨ Features
+✅ Save any type: primitives, List, Map, Object, List<Object>
+✅ Works on Android, iOS, Windows, macOS, Linux
+✅ No need to open/close boxes or databases
+✅ No async/await needed for get/save
+✅ Automatic JSON (de)serialization
+✅ In-memory caching for faster reads
+✅ Store.init() loads the cache once
+✅ Simple key-value usage
+✅ Supports custom models & List<CustomModel>
 
-✅ Save **any type of data** (primitives, List, Map, Object, List<Object>)  
-✅ Cross-platform: Android, iOS, Windows, macOS, Linux  
-✅ No box opening/closing  
-✅ Auto JSON serialization  
-✅ Key-based read/write  
-✅ Fast and persistent  
-✅ Single-line save/get syntax  
-✅ Built-in offline caching for APIs  
-✅ Supports List<CustomObject> without effort  
 
 ---
 
 ## 📦 Getting Started
+
+⚙️ Initialization (⚠️ Required)
+Call Store.init() once before accessing stored data (usually in main()):
+
+```dart
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Store.init(); // ⚠️ Required before using get()
+  Store.register<User>(User.fromJson); // Register custom model
+  runApp(MyApp());
+}
+
+```
+
+---
+
+
 
 ### 🔐 Register your model (once in `main()`)
 
@@ -44,8 +61,9 @@ Store.register<User>(User.fromJson);
 ### 🔢 int
 
 ```dart
-await Store.save("count", 5);
-final count = await Store.get("count");
+Store.save("count", 5); // ✅ No await
+final count = Store.get<int>("count");
+
 ```
 
 ---
@@ -53,8 +71,9 @@ final count = await Store.get("count");
 ### 📝 String
 
 ```dart
-await Store.save("username", "Mohamed");
-final name = await Store.get("username");
+Store.save("username", "Mohamed");
+final name = Store.get<String>("username");
+
 ```
 
 ---
@@ -62,8 +81,9 @@ final name = await Store.get("username");
 ### 👤 Object
 
 ```dart
-await Store.save("user", User(name: "Ali", age: 25));
-final user = await Store.get("user");
+Store.save("user", User(name: "Ali", age: 25));
+final user = Store.get<User>("user");
+
 ```
 
 ---
@@ -71,8 +91,10 @@ final user = await Store.get("user");
 ### 👥 List<Object>
 
 ```dart
-await Store.save("users", [User(...), User(...)]);
-final users = await Store.get("users");
+Store.save("users", [User(...), User(...)]);
+// You must use getList to deserialize list:
+final users = Store.getList<User>("users");
+
 ```
 
 ---
@@ -80,7 +102,7 @@ final users = await Store.get("users");
 ### ❌ Delete a specific key
 
 ```dart
-await Store.delete("username");
+Store.delete("username");
 ```
 
 ---
@@ -88,7 +110,7 @@ await Store.delete("username");
 ### 🧹 Clear all data
 
 ```dart
-await Store.clear();
+Store.clear();
 ```
 
 ---
@@ -96,7 +118,7 @@ await Store.clear();
 ### 🔍 Check if key exists
 
 ```dart
-final hasUser = await Store.contains("user");
+final hasUser = Store.contains("user");
 ```
 
 ---
