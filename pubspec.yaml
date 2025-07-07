@@ -1,7 +1,9 @@
 name: simple_store
 description: Flutter package for ultra-simple local storage of any type using key-value format — zero boilerplate.
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/mohamedzebib22/simple_storage
+homepage: https://github.com/mohamedzebib22/simple_storage
+
 
 environment:
   sdk: ^3.8.1
