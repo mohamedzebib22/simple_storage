@@ -1,3 +1,6 @@
+/// Example usage of the `smart_store` package
+/// Demonstrates storing and retrieving custom objects and lists.
+
 import 'package:smart_store/smart_store.dart';
 
 class User {
@@ -12,7 +15,7 @@ class User {
   Map<String, dynamic> toJson() => {'name': name, 'age': age};
 }
 
-void main()  {
+void main() {
   // 1️⃣ Register the model (once)
   Store.register<User>(User.fromJson);
 
@@ -33,7 +36,7 @@ void main()  {
   Store.save("userList", modelList);
 
   // 5️⃣ Get list of users
-  final users =  Store.getList<User>("userList");
+  final users = Store.getList<User>("userList");
   print("📋 List of users:");
   for (var u in users) {
     print("- ${u.name}, Age: ${u.age}");

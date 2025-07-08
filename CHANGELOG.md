@@ -1,4 +1,4 @@
-## 1.0.2
+## 1.0.3
 
 - Fixed README formatting issues for pub.dev
 - Improved Markdown compatibility
