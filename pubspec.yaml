@@ -1,6 +1,7 @@
 name: smart_store
-description: Flutter package for ultra-simple local storage of any type using key-value format — zero boilerplate.
-version: 1.0.2
+description: Flutter package for ultra-simple local data storage in key-value format - with zero boilerplate.
+
+version: 1.0.3
 repository: https://github.com/mohamedzebib22/simple_storage
 homepage: https://github.com/mohamedzebib22/simple_storage
 
