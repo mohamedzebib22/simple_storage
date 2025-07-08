@@ -1,9 +1,8 @@
+# 🧠 smart_store
 
-🧠 simple_store
-Flutter package for ultra-simple local data storage in key-value format — with zero boilerplate.
-Supports saving any type: int, double, String, List, Map, Object, List<Object>... all with just one line.
-Fully cross-platform: Android, iOS, Windows, macOS, Linux
-
+Flutter package for ultra-simple local data storage in key-value format — with zero boilerplate.  
+Supports saving any type: `int`, `double`, `String`, `List`, `Map`, `Object`, `List<Object>`... all with just one line.  
+Fully cross-platform: Android, iOS, Windows, macOS, Linux.
 
 ---
 
@@ -16,23 +15,23 @@ flutter pub add simple_store
 ---
 
 ## ✨ Features
-✅ Save any type: primitives, List, Map, Object, List<Object>
-✅ Works on Android, iOS, Windows, macOS, Linux
-✅ No need to open/close boxes or databases
-✅ No async/await needed for get/save
-✅ Automatic JSON (de)serialization
-✅ In-memory caching for faster reads
-✅ Store.init() loads the cache once
-✅ Simple key-value usage
-✅ Supports custom models & List<CustomModel>
 
+- ✅ Save any type: primitives, List, Map, Object, List<Object>
+- ✅ Works on Android, iOS, Windows, macOS, Linux
+- ✅ No need to open/close boxes or databases
+- ✅ No async/await needed for get/save
+- ✅ Automatic JSON (de)serialization
+- ✅ In-memory caching for faster reads
+- ✅ Store.init() loads the cache once
+- ✅ Simple key-value usage
+- ✅ Supports custom models & List<CustomModel>
 
 ---
 
 ## 📦 Getting Started
 
-⚙️ Initialization (⚠️ Required)
-Call Store.init() once before accessing stored data (usually in main()):
+⚙️ **Initialization (⚠️ Required)**  
+Call `Store.init()` once before accessing stored data (usually in `main()`):
 
 ```dart
 void main() async {
@@ -41,12 +40,9 @@ void main() async {
   Store.register<User>(User.fromJson); // Register custom model
   runApp(MyApp());
 }
-
 ```
 
 ---
-
-
 
 ### 🔐 Register your model (once in `main()`)
 
@@ -63,7 +59,6 @@ Store.register<User>(User.fromJson);
 ```dart
 Store.save("count", 5); // ✅ No await
 final count = Store.get<int>("count");
-
 ```
 
 ---
@@ -73,7 +68,6 @@ final count = Store.get<int>("count");
 ```dart
 Store.save("username", "Mohamed");
 final name = Store.get<String>("username");
-
 ```
 
 ---
@@ -83,7 +77,6 @@ final name = Store.get<String>("username");
 ```dart
 Store.save("user", User(name: "Ali", age: 25));
 final user = Store.get<User>("user");
-
 ```
 
 ---
@@ -94,7 +87,6 @@ final user = Store.get<User>("user");
 Store.save("users", [User(...), User(...)]);
 // You must use getList to deserialize list:
 final users = Store.getList<User>("users");
-
 ```
 
 ---
@@ -146,11 +138,11 @@ class User {
 
 ## 🖥 Platform Paths
 
-| Platform | Storage Path |
-|----------|---------------|
-| Android/iOS | App Documents Directory |
-| Windows | %APPDATA%\SimpleStore\store.json |
-| macOS/Linux | .simple_store/store.json in project path |
+| Platform     | Storage Path                             |
+|--------------|------------------------------------------|
+| Android/iOS  | App Documents Directory                  |
+| Windows      | %APPDATA%\SimpleStore\store.json         |
+| macOS/Linux  | .simple_store/store.json in project path |
 
 ---
 
